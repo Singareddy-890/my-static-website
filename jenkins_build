@@ -1,0 +1,15 @@
+pipeline {
+    agent any
+    stages {
+        stage('Pull from Git') {
+            steps {
+                git branch: 'main', url: 'git@github.com:username/repo.git'
+            }
+        }
+        stage('Deploy to NGINX') {
+            steps {
+                sh 'cp -r * /var/www/html/your_website/'
+            }
+        }
+    }
+}
